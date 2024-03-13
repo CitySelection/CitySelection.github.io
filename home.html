@@ -1,0 +1,53 @@
+<!-- 在 city_selector/templates/home.html 中 -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>'城市筛选'</title>
+</head>
+<body>
+    <h2>上传你的城市巡查记录csv格式</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form }}
+        
+
+        <label for="c1">需要限制的好差市场的种类：</label>
+        <select id="c1" name="c1">
+            <option value="好">好</option>
+            <option value="差">差</option>
+        </select>
+        <label for="d1">需要限制的占比：</label>
+        <input type="text" id="d1" name="d1",value="{{request.POST.d1}}"><br><br>
+        
+
+        <label for="d2">需要现在没有检查年月城市的占比</label>
+        <input type="text" id="d2" name="d2",value="{{request.POST.d2}}"><br><br>
+
+        <label for="c3">需要限制占比的行政级别城市：</label>
+        <input type="text" id="c3" name="c3",value="{{request.POST.c3}}">
+        <label for="d3">需要限制占比：</label>
+        <input type="text" id="d3" name="d3",value="{{request.POST.d3}}"><br></br>
+
+        <label for="d4">需要限制距离上次检查天数大于180天的个数:</label>
+        <input type="text" id="d4" name="d4",value="{{request.POST.d4}}"><br></br>
+
+        <label for="c5">需要复查城市的月份上限：</label>
+        <input type="text" id="c5" name="c5",value="{{request.POST.c5}}">
+        <label for="c6">下限：</label>
+        <input type="text" id="c6" name="c6",value="{{request.POST.c6}}">
+
+        <label for="d5">需要的个数（不含必选城市）：</label>
+        <input type="text" id="d5" name="d5",value="{{request.POST.d5}}"><br></br>
+
+        <label for="excluded_city">要排除的城市:</label>
+        <input type="text" id="excluded_city" name="excluded_city">
+        
+
+        <button type="submit">生成列表</button>
+    </form>
+    
+</body>
+
+</html>
